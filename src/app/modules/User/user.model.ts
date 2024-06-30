@@ -3,27 +3,31 @@ import { Schema, model } from 'mongoose';
 import { TUser } from './user.interface';
 import bcrypt from 'bcrypt';
 import { config } from '../../config';
+import { UserRoll } from './user.constant';
 
 const UserSchema = new Schema<TUser>({
     name: {
         type: String,
-        required: true,
+        required: [true, "Name is required"],
     },
     email: {
         type: String,
-        required: true,
+        required: [true, "Email is required"],
         unique: true,
     },
     password: {
         type: String,
+        required: [true, "password is required"],
+        select: false,
     },
     phone: {
         type: String,
-        required: true,
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],
+        // enum: ['USER', 'ADMIN', 'SUPER_ADMIN'],
+        enum: Object.keys(UserRoll),
+        default: 'USER',
         required: true,
     },
     address: {

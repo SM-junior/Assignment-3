@@ -9,6 +9,16 @@ const FacilitySchemaValidation = z.object({
         isDeleted: z.boolean().default(false),
     }),
 });
+const updateFacilityValidationSchema = z.object({
+    body: z.object({
+        name: z.string().optional(),
+        description: z.string().optional(),
+        pricePerHour: z.number(),
+        location: z.string().optional(),
+        isDeleted: z.boolean().default(false),
+    }),
+});
 export const FacilityValidation = {
     FacilitySchemaValidation,
+    updateFacilityValidationSchema
 };

@@ -1,12 +1,12 @@
 import { catchAsync } from '../../utils/catchAsync';
 import { UserServices } from './user.services';
 
-const createUser = catchAsync(async (req, res) => {
+const createAdmin = catchAsync(async (req, res) => {
     console.log(req.body);
-    const result = await UserServices.createUserIntoDb(req.body);
+    const result = await UserServices.createAdminIntoDb(req.body);
     res.status(200).json({
         success: true,
-        massage: "User registered successfully",
+        massage: "Admin is created successfully",
         data: result,
     });
 });
@@ -21,6 +21,6 @@ const getAllUsers = catchAsync(async (req, res) => {
 });
 
 export const UserControllers = {
-    createUser,
+    createAdmin,
     getAllUsers,
 };

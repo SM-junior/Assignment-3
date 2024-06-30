@@ -1,10 +1,10 @@
 import { TUser } from './user.interface';
 import { UserModel } from './user.model';
 
-const createUserIntoDb = async (payload: TUser) => {
+const createAdminIntoDb = async (payload: any) => {
     console.log(payload);
-    const result = await UserModel.create(payload);
-    return result;
+    const admin = await UserModel.create(payload);
+    return admin;
 };
 
 const getAllUserFromDb = async (payload: Record<string, unknown>) => {
@@ -13,6 +13,6 @@ const getAllUserFromDb = async (payload: Record<string, unknown>) => {
 };
 
 export const UserServices = {
-    createUserIntoDb,
+    createAdminIntoDb,
     getAllUserFromDb,
 };
